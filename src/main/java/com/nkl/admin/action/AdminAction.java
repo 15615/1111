@@ -56,7 +56,8 @@ public class AdminAction extends BaseAction {
 	ProcessEngine processEngine;
 
 	// 抓取页面参数liuhaide
-	String savePath;
+	String savePath; 
+	
 	User paramsUser;
 	Clazz paramsClazz;
 	Course paramsCourse;

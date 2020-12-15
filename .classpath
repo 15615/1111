@@ -31,6 +31,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jbpm"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
