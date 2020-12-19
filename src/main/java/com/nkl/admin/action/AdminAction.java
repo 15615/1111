@@ -51,7 +51,7 @@ public class AdminAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	@Resource
 	AdminManager adminManager;
-
+ 
 	@Autowired
 	ProcessEngine processEngine;
 
