@@ -5,9 +5,9 @@
       <transition name="to 请假" to="请假" g="-63,-25"/>
    </start>
    <task name="请假" g="311,154,92,52" assignee="#{application}">
-      <transition name="to task2" to="task2" g="-63,-25"/>
+      <transition name="to 班主任审批" to="班主任审批" g="-63,-25"/>
    </task>
-   <task name="task2" g="314,252,92,52">
+   <task name="班主任审批" g="314,252,92,52">
       <transition name="to end1" to="end1" g="-62,-25"/>
    </task>
    <end name="end1" g="335,346,48,48"/>
