@@ -2,9 +2,9 @@
 
 <process name="qingjia" xmlns="http://jbpm.org/4.4/jpdl">
    <start name="start1" g="335,51,48,48">
-      <transition name="to task1" to="task1" g="-63,-25"/>
+      <transition name="to 请假" to="请假" g="-63,-25"/>
    </start>
-   <task name="task1" g="311,154,92,52">
+   <task name="请假" g="311,154,92,52">
       <transition name="to task2" to="task2" g="-63,-25"/>
    </task>
    <task name="task2" g="314,252,92,52">
