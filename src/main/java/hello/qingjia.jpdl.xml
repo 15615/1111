@@ -4,7 +4,7 @@
    <start name="start1" g="335,51,48,48">
       <transition name="to 请假" to="请假" g="-63,-25"/>
    </start>
-   <task name="请假" g="311,154,92,52">
+   <task name="请假" g="311,154,92,52" assignee="#{application}">
       <transition name="to task2" to="task2" g="-63,-25"/>
    </task>
    <task name="task2" g="314,252,92,52">
