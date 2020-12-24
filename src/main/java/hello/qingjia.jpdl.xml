@@ -8,7 +8,10 @@
       <transition name="to 班主任审批" to="班主任审批" g="-63,-25"/>
    </task>
    <task name="班主任审批" g="314,252,92,52" assignee="班主任">
+      <transition name="to 学院审批" to="学院审批" g="-85,-25"/>
+   </task>
+   <task name="学院审批" g="312,337,92,52" assignee="学院">
       <transition name="to end1" to="end1" g="-62,-25"/>
    </task>
-   <end name="end1" g="335,346,48,48"/>
+   <end name="end1" g="335,430,48,48"/>
 </process>
