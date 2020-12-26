@@ -296,14 +296,14 @@
         <groupId>org.codehaus.mojo</groupId>        
         <artifactId>findbugs-maven-plugin</artifactId>        
         <version>3.0.1</version>
-       
-       <!--
-       <configuration>        
+        <configuration>        
      
            <findbugsXmlOutput>true</findbugsXmlOutput>        
            <findbugsXmlWithMessages>true</findbugsXmlWithMessages>        
            <xmlOutput>true</xmlOutput>        
-        </configuration>      
+        </configuration>   
+       <!--
+         
        
         https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
           
