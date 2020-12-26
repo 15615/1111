@@ -1,6 +1,16 @@
 eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/classes/applicationContext.xml=UTF-8
+encoding//WebRoot/WEB-INF/classes/jbpm.cfg.xml=UTF-8
+encoding//WebRoot/WEB-INF/classes/struts-admin.xml=UTF-8
+encoding//WebRoot/WEB-INF/classes/struts.xml=UTF-8
+encoding//WebRoot/WEB-INF/classes/template/Score.xml=UTF-8
+encoding//WebRoot/WEB-INF/classes/template/Scores.xls=UTF-8
+encoding//WebRoot/WEB-INF/classes/template/ScoresSum.xls=UTF-8
+encoding//WebRoot/WEB-INF/classes/template/User.xml=UTF-8
+encoding//WebRoot/WEB-INF/classes/template/Users.xls=UTF-8
 encoding//src/main/java=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8
+encoding/pom.xml=UTF-8
 encoding/src=UTF-8
