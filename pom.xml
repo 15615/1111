@@ -296,14 +296,14 @@
         <groupId>org.codehaus.mojo</groupId>        
         <artifactId>findbugs-maven-plugin</artifactId>        
         <version>3.0.1</version>
-        
+       
        <!--
-         
-         <configuration>        
+       <configuration>        
      
            <findbugsXmlOutput>true</findbugsXmlOutput>        
-         
-        </configuration>   
+           <findbugsXmlWithMessages>true</findbugsXmlWithMessages>        
+           <xmlOutput>true</xmlOutput>        
+        </configuration>      
        
         https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
           
@@ -343,7 +343,7 @@
     </plugins>
   </build>
     <properties>
-        <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 </project>
