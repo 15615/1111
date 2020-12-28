@@ -70,7 +70,8 @@ public class CalcResult1 {
 			}
 			switch (i) {
 			case 0:
-				numpattern = Integer.valueOf(line);
+//				numpattern = Integer.valueOf(line);
+				numpattern = Integer.parseInt(line);
 				break;
 			case 1:
 				dimension = Integer.valueOf(line);
