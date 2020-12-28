@@ -444,7 +444,8 @@ public class CalcResult1 {
 	 * @param rescenter
 	 */
 	public void export(double[][] umatrix, double[][] rescenter) {
-		String str = null;
+//		String str = null;
+		StringBuilder str = new StringBuilder();
 		String tab = " ";
 		// 矩阵转置，便于在txt中显示
 		double[][] new_umatrix = new double[numpattern][cata];
@@ -459,12 +460,13 @@ public class CalcResult1 {
 			//	FileWriter matrixFileWriter = new FileWriter(FILE_MATRIX);
 
 			for (int i = 0; i < numpattern; i++) {
-				str = "";
+//				str = "";
 				for (int j = 0; j < cata; j++) {
-					str += new_umatrix[i][j] + tab;
+//					str += new_umatrix[i][j] + tab;
+					str.append(new_umatrix[i][j]).append(tab);
 				}
-				str += "\n";
-				matrixFileWriter.write(str);
+				str.append("\n");
+				matrixFileWriter.write(str.toString());
 			}
 
 			matrixFileWriter.close();
@@ -479,12 +481,14 @@ public class CalcResult1 {
 			//FileWriter centerFileWriter = new FileWriter(FILE_CENTER);
 
 			for (int i = 0; i < cata; i++) {
-				str = "";
+//				str = "";
+				str.delete(0, str.length());//清空StringBuilder缓存
 				for (int j = 0; j < dimension; j++) {
-					str += rescenter[i][j] + tab;
+//					str += rescenter[i][j] + tab;
+					str.append(new_umatrix[i][j]).append(tab);
 				}
-				str += "\n";
-				centerFileWriter.write(str);
+				str.append("\n");
+				centerFileWriter.write(str.toString());
 			}
 
 			centerFileWriter.close();
