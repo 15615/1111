@@ -3,9 +3,11 @@ package com.nkl.admin.action;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class CalcResult1 {
 	public static String FILE_DATA_IN = "D:\\FCM手算\\java配置与输出\\data_in.txt";// 输入的样本数据
@@ -442,7 +444,8 @@ public class CalcResult1 {
 		}
 		// 输出隶属度矩阵
 		try {
-			FileWriter matrixFileWriter = new FileWriter(FILE_MATRIX);
+			OutputStreamWriter matrixFileWriter=new OutputStreamWriter(new FileOutputStream(FILE_MATRIX), "UTF-8");
+		//	FileWriter matrixFileWriter = new FileWriter(FILE_MATRIX);
 
 			for (int i = 0; i < numpattern; i++) {
 				str = "";
