@@ -3,7 +3,6 @@ package com.nkl.common.action;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -106,10 +105,10 @@ public class BaseAction extends ActionSupport {
 		ByteArrayOutputStream byteArrayOutputStream = null;
 		try {
 			byteArrayOutputStream = new ByteArrayOutputStream();
-		
-			e.printStackTrace(new PrintWriter(new OutputStreamWriter(byteArrayOutputStream, "utf-8")));
+			PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(byteArrayOutputStream, "utf-8"));
+			e.printStackTrace(printWriter);
 			
-			stringBuffer.append(byteArrayOutputStream.toString());
+			stringBuffer.append(printWriter.toString());
 		} catch (Exception ex) {
 		} finally {
 			if (byteArrayOutputStream != null) {
