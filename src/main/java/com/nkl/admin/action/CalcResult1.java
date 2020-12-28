@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class CalcResult1 {
-	public static String FILE_DATA_IN = "D:\\FCM手算\\java配置与输出\\data_in.txt";// 输入的样本数据
+	public final static String FILE_DATA_IN = "D:\\FCM手算\\java配置与输出\\data_in.txt";// 输入的样本数据
 	public static String FILE_PAR = "D:\\FCM手算\\java配置与输出\\parameters.txt";// 参数配置
 	public static String FILE_CENTER = "D:\\FCM手算\\java配置与输出\\center1.txt";// 聚类中心
 	public static String FILE_MATRIX = "D:\\FCM手算\\java配置与输出\\matrix1.txt";// 隶属度矩阵
