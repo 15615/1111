@@ -141,21 +141,22 @@ public class CalcResult1 {
 		String line = null;
 		String regex = "\\s+";// String regex = ",";
 		int row = 0;
-		while (true) {
-			try {
-				line = br.readLine();
-			} catch (IOException e) {
-				// TODO 自动生成 catch 块
-				e.printStackTrace();
-			}
+//		while (true) {
+		while ((line = br.readLine())!=null) {
+//			try {
+//				line = br.readLine();
+//			} catch (IOException e) {
+//				// TODO 自动生成 catch 块
+//				e.printStackTrace();
+//			}
 
-			if (line == null)
-				break;
+//			if (line == null)
+//				break;
 
 			String[] split = line.split(regex);// 字符串以','拆分
 
 			for (int i = 0; i < split.length; i++) {
-				pattern[row][i] = Double.valueOf(split[i]);
+				pattern[row][i] = Double.parseDouble(split[i]);
 			}
 			row++;
 		}
