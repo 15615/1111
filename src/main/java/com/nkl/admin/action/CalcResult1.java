@@ -74,19 +74,24 @@ public class CalcResult1 {
 				numpattern = Integer.parseInt(line);
 				break;
 			case 1:
-				dimension = Integer.valueOf(line);
+//				dimension = Integer.valueOf(line);
+				dimension = Integer.parseInt(line);
 				break;
 			case 2:
-				cata = Integer.valueOf(line);
+//				cata = Integer.valueOf(line);
+				cata = Integer.parseInt(line);
 				break;
 			case 3:
-				m = Double.valueOf(line);
+//				m = Double.valueOf(line);
+				m = Double.parseDouble(line);
 				break;
 			case 4:
-				maxcycle = Integer.valueOf(line);
+//				maxcycle = Integer.valueOf(line);
+				maxcycle = Integer.parseInt(line);
 				break;
 			case 5:
-				limit = Double.valueOf(line);
+//				limit = Double.valueOf(line);
+				limit = Double.parseDouble(line);
 				break;
 			}
 		}
