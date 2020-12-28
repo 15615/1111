@@ -3,9 +3,11 @@ package com.nkl.admin.action;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -176,7 +178,9 @@ public class CalcResult2 {
 			}
 			result.append("<br/>最短的那行数据：");
 			result.append(bb);
-			Writer out = new FileWriter(file3);
+			Writer out = 	new OutputStreamWriter(new FileOutputStream(file3), "UTF-8");
+			//Writer out = new FileWriter(file3);
+			
 			for(int i=1; i<lieee; i++){
 				for(int j=0; j<lie; j++){
 					out.write(arr3[i][j].setScale(2, RoundingMode.HALF_UP).toString()+" ");
