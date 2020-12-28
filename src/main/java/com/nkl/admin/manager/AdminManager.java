@@ -1,7 +1,9 @@
 package com.nkl.admin.manager;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.List;
@@ -744,7 +746,8 @@ public class AdminManager {
 			if (!file.exists()) {
 				file.createNewFile();
 			}
-			FileWriter fileWriter = new FileWriter(file);
+			OutputStreamWriter fileWriter=new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+		//	FileWriter fileWriter = new FileWriter(file);
 			List<SScore> sscores = listSScoresData1(sscore);
 			if (sscores != null && sscores.size() > 0) {
 				for (int i = 0; i < sscores.size(); i++) {
