@@ -2,8 +2,10 @@ package com.nkl.admin.action;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,7 +20,15 @@ public class CalcResult2 {
 
 	public String getLineFromTxt(File file, String split) throws Exception {
 		StringBuilder result = new StringBuilder();
-		BufferedReader br = new BufferedReader(new FileReader(file));
+		BufferedReader br = 
+				new BufferedReader(
+new InputStreamReader(
+								new FileInputStream(file),
+								"utf-8"
+								)
+						);
+				
+			
 		String firstLine;
 		int s = 0;
 		xe = 1;
