@@ -463,7 +463,9 @@ public class CalcResult1 {
 
 		// 输出聚类的中心
 		try {
-			FileWriter centerFileWriter = new FileWriter(FILE_CENTER);
+			OutputStreamWriter centerFileWriter=new OutputStreamWriter(new FileOutputStream(FILE_CENTER), "UTF-8");
+
+			//FileWriter centerFileWriter = new FileWriter(FILE_CENTER);
 
 			for (int i = 0; i < cata; i++) {
 				str = "";
