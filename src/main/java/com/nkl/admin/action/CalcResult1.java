@@ -1,10 +1,11 @@
 package com.nkl.admin.action;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class CalcResult1 {
 	public static String FILE_DATA_IN = "D:\\FCM手算\\java配置与输出\\data_in.txt";// 输入的样本数据
@@ -37,19 +38,25 @@ public class CalcResult1 {
 	 * 读取配置文件
 	 * 
 	 * @return
+	 * @throws IOException 
 	 */
-	public boolean getPar() {
+	public boolean getPar() throws IOException {
 
 		// 打开配置文件
 
 		BufferedReader br = null;
 
 		try {
-			br = new BufferedReader(new FileReader(FILE_PAR));
+			br = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream(FILE_PAR),
+							"utf-8"
+							)
+					);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		
 		// 读取配置文件
 		String line = null;
 		for (int i = 0; i < 6; i++) {
@@ -95,7 +102,7 @@ public class CalcResult1 {
 		 * 
 		 * }catch(IOException e){ e.printStackTrace(); }
 		 */
-
+		br.close();
 		return true;
 	}
 
@@ -104,12 +111,18 @@ public class CalcResult1 {
 	 * 
 	 * @param pattern
 	 * @return
+	 * @throws IOException 
 	 */
 	// 样本保存在二维数组中
-	public boolean getPattern(double[][] pattern) {
+	public boolean getPattern(double[][] pattern) throws IOException {
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader(FILE_DATA_IN));
+			br = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream(FILE_DATA_IN),
+							"utf-8"
+							)
+					);
 		} catch (FileNotFoundException e) {
 			// TODO 自动生成 catch 块
 			e.printStackTrace();
@@ -137,7 +150,7 @@ public class CalcResult1 {
 			}
 			row++;
 		}
-
+		br.close();
 		return false;
 	}
 
@@ -390,9 +403,10 @@ public class CalcResult1 {
 
 	/**
 	 * 运行Fcm_myself算法
+	 * @throws IOException 
 	 * 
 	 */
-	public void runFcm_myself() {
+	public void runFcm_myself() throws IOException {
 
 		double[][] pattern = new double[numpattern][dimension];
 		double[][] umatrix = new double[cata][numpattern];
@@ -469,8 +483,9 @@ public class CalcResult1 {
 	 * 主函数
 	 * 
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		CalcResult1 Fcm_myself = new CalcResult1();
 		Fcm_myself.getPar();
 		Fcm_myself.runFcm_myself();
