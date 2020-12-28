@@ -784,7 +784,8 @@ public class AdminManager {
 			if (!file.exists()) {
 				file.createNewFile();
 			}
-			FileWriter fileWriter = new FileWriter(file);
+			OutputStreamWriter fileWriter=new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+		//	FileWriter fileWriter = new FileWriter(file);
 			fileWriter.write(canshu.getParam1());
 			fileWriter.write("\r\n");
 			fileWriter.write(canshu.getParam2());
