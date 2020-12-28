@@ -20,13 +20,7 @@ public class CalcResult2 {
 
 	public String getLineFromTxt(File file, String split) throws Exception {
 		StringBuilder result = new StringBuilder();
-		BufferedReader br = 
-				new BufferedReader(
-new InputStreamReader(
-								new FileInputStream(file),
-								"utf-8"
-								)
-						);
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"utf-8"));
 				
 			
 		String firstLine;
@@ -77,7 +71,8 @@ new InputStreamReader(
 	@SuppressWarnings("unused")
 	public void getLineFromTxt1(File file, String split, int y)
 			throws Exception {
-		BufferedReader br = new BufferedReader(new FileReader(file));
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"utf-8"));
+		//BufferedReader br = new BufferedReader(new FileReader(file));
         String firstLine;
         int xee=1;
         while((firstLine = br.readLine())!=null)
