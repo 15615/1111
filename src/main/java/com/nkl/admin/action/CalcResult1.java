@@ -141,6 +141,7 @@ public class CalcResult1 {
 		String line = null;
 		String regex = "\\s+";// String regex = ",";
 		int row = 0;
+		if(br == null) return false;
 //		while (true) {
 		while ((line = br.readLine())!=null) {
 //			try {
