@@ -2,7 +2,9 @@ package com.nkl.common.action;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -104,7 +106,9 @@ public class BaseAction extends ActionSupport {
 		ByteArrayOutputStream byteArrayOutputStream = null;
 		try {
 			byteArrayOutputStream = new ByteArrayOutputStream();
-			e.printStackTrace(new PrintStream(byteArrayOutputStream));
+		
+			e.printStackTrace(new PrintWriter(new OutputStreamWriter(byteArrayOutputStream, "utf-8")));
+			
 			stringBuffer.append(byteArrayOutputStream.toString());
 		} catch (Exception ex) {
 		} finally {
