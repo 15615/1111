@@ -2,7 +2,9 @@ package com.nkl.admin.action;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -215,8 +217,11 @@ public class UploadFileAction extends BaseUploadAction{
 		ByteArrayOutputStream byteArrayOutputStream = null;
 		try {
 			byteArrayOutputStream = new ByteArrayOutputStream();
-			e.printStackTrace(new PrintStream(byteArrayOutputStream));
-			stringBuffer.append(byteArrayOutputStream.toString());
+			
+			PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(byteArrayOutputStream, "utf-8"));
+			e.printStackTrace(printWriter);
+			
+			stringBuffer.append(printWriter.toString());
 		} catch (Exception ex) {
 		} finally {
 			if (byteArrayOutputStream != null) {
