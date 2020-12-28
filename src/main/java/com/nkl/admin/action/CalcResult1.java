@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -58,7 +57,7 @@ public class CalcResult1 {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		// 读取配置文件
 		String line = null;
 		for (int i = 0; i < 6; i++) {
@@ -70,27 +69,27 @@ public class CalcResult1 {
 			}
 			switch (i) {
 			case 0:
-//				numpattern = Integer.valueOf(line);
+				//				numpattern = Integer.valueOf(line);
 				numpattern = Integer.parseInt(line);
 				break;
 			case 1:
-//				dimension = Integer.valueOf(line);
+				//				dimension = Integer.valueOf(line);
 				dimension = Integer.parseInt(line);
 				break;
 			case 2:
-//				cata = Integer.valueOf(line);
+				//				cata = Integer.valueOf(line);
 				cata = Integer.parseInt(line);
 				break;
 			case 3:
-//				m = Double.valueOf(line);
+				//				m = Double.valueOf(line);
 				m = Double.parseDouble(line);
 				break;
 			case 4:
-//				maxcycle = Integer.valueOf(line);
+				//				maxcycle = Integer.valueOf(line);
 				maxcycle = Integer.parseInt(line);
 				break;
 			case 5:
-//				limit = Double.valueOf(line);
+				//				limit = Double.valueOf(line);
 				limit = Double.parseDouble(line);
 				break;
 			}
@@ -110,7 +109,9 @@ public class CalcResult1 {
 		 * 
 		 * }catch(IOException e){ e.printStackTrace(); }
 		 */
-		br.close();
+		if(br != null){
+			br.close();
+		}
 		return true;
 	}
 
@@ -158,7 +159,9 @@ public class CalcResult1 {
 			}
 			row++;
 		}
-		br.close();
+		if(br != null){
+			br.close();
+		}
 		return false;
 	}
 
@@ -196,7 +199,7 @@ public class CalcResult1 {
 	 *            样本属性个数
 	 * @return
 	 */
-	public boolean Normalized(double pattern[][], int numpattern,
+	public boolean normalized(double pattern[][], int numpattern,
 			int dimension) {
 		double min_max[] = new double[2];
 		double a[] = new double[pattern.length];// 提取列
@@ -270,7 +273,7 @@ public class CalcResult1 {
 		if (cata >= numpattern || m <= 1)
 			return false;
 		// 规格化样本--蠢哭了
-		Normalized(pattern, numpattern, dimension);
+		normalized(pattern, numpattern, dimension);
 
 		int dai = 0, testflag = 0;// 迭代次数，迭代标志
 
@@ -429,7 +432,7 @@ public class CalcResult1 {
 				limit, umatrix, rescenter, result);
 
 		// 输出结果
-		Export(umatrix, rescenter);
+		export(umatrix, rescenter);
 	}
 
 	/**
@@ -438,7 +441,7 @@ public class CalcResult1 {
 	 * @param umatrix
 	 * @param rescenter
 	 */
-	public void Export(double[][] umatrix, double[][] rescenter) {
+	public void export(double[][] umatrix, double[][] rescenter) {
 		String str = null;
 		String tab = " ";
 		// 矩阵转置，便于在txt中显示
@@ -451,7 +454,7 @@ public class CalcResult1 {
 		// 输出隶属度矩阵
 		try {
 			OutputStreamWriter matrixFileWriter=new OutputStreamWriter(new FileOutputStream(FILE_MATRIX), "UTF-8");
-		//	FileWriter matrixFileWriter = new FileWriter(FILE_MATRIX);
+			//	FileWriter matrixFileWriter = new FileWriter(FILE_MATRIX);
 
 			for (int i = 0; i < numpattern; i++) {
 				str = "";
