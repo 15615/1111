@@ -203,7 +203,7 @@ public class CalcResult1 {
 	 */
 	public boolean normalized(double pattern[][], int numpattern,
 			int dimension) {
-		double min_max[] = new double[2];
+//		double min_max[] = new double[2];
 		double a[] = new double[pattern.length];// 提取列
 		// 先复制pattern到copypattern
 		double copypattern[][] = new double[numpattern][dimension];
@@ -217,6 +217,7 @@ public class CalcResult1 {
 			for (int k = 0; k < pattern.length; k++)
 				a[k] = pattern[k][j];
 			for (int i = 0; i < pattern.length; i++) {
+				double min_max[] = new double[2];
 				min_max = min_max_fun(a);
 				double minValue = min_max[0];
 				double maxValue = min_max[1];
