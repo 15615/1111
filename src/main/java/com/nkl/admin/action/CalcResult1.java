@@ -92,6 +92,9 @@ public class CalcResult1 {
 				//				limit = Double.valueOf(line);
 				limit = Double.parseDouble(line);
 				break;
+			default :
+				System.out.println("未匹配到case的值i："+i);
+				break;
 			}
 		}
 		// 读取配置文件
@@ -161,9 +164,7 @@ public class CalcResult1 {
 			}
 			row++;
 		}
-		if(br != null){
-			br.close();
-		}
+		br.close();
 		return false;
 	}
 
