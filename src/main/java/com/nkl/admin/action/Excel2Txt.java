@@ -2,7 +2,10 @@ package com.nkl.admin.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +54,8 @@ public class Excel2Txt {
 			if (!file.exists()) {
 				file.createNewFile();
 			}
-			FileWriter fileWriter =new FileWriter(file);
+			OutputStreamWriter fileWriter = 	new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+			//FileWriter fileWriter =new FileWriter(file);
 			for (int i = 0; i < datas.size(); i++) {
 				List<String> data = datas.get(i);
 				for (int j = 0; j < data.size(); j++) {
