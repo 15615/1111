@@ -225,7 +225,7 @@ public class CalcResult2 {
               }
         	
         }
-        System.out.printf("最短的那行数据:%d\n",bb);
+        System.out.printf("最短的那行数据:%d%n",bb);
     	Writer out = 	new OutputStreamWriter(new FileOutputStream(file3), "UTF-8");
        // Writer out =new FileWriter(file3);
         for(int i=1; i<calcResult2.lieee; i++)

@@ -26,7 +26,8 @@ public class LoginAction  extends BaseAction {
 	 * @Description: 用户登录
 	 * @return String
 	 */
-	public String InSystem(){
+	//public String InSystem(){
+		public String inSystem(){
 		try {
 			//验证码验证
 			String random = (String)Param.getSession("random");
@@ -58,7 +59,8 @@ public class LoginAction  extends BaseAction {
 	 * @Description: 退出登录
 	 * @return String
 	 */
-	public String OutSystem(){
+	//public String OutSystem(){
+		public String outSystem(){
 		try {
 			//用户查询
 			User user = (User)Param.getSession("admin");
