@@ -1,9 +1,12 @@
 package com.nkl.admin.manager;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.List;
@@ -736,15 +739,16 @@ public class AdminManager {
 	 * @Description: 导入成绩
 	 * @param data1
 	 * @return boolean
+	 * @throws IOException 
 	 */
-	public boolean daoruchengji(String data1) {
+	public boolean daoruchengji(String data1) throws IOException {
 		User admin = (User) Param.getSession("admin");
 		SScore sscore = new SScore();
 		sscore.setTeacher_id(admin.getUser_id());
-		try {
+//		try {
 			File file = new File(data1);
 			if (!file.exists()) {
-				file.createNewFile();
+				if(!file.createNewFile()) return false; //创建失败直接返回false
 			}
 			OutputStreamWriter fileWriter=new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 		//	FileWriter fileWriter = new FileWriter(file);
@@ -764,11 +768,11 @@ public class AdminManager {
 				fileWriter.close();
 				return false;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return false;
-		}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			return false;
+//		}
 		return true;
 	}
 
