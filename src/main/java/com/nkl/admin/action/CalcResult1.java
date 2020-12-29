@@ -217,10 +217,12 @@ public class CalcResult1 {
 			for (int k = 0; k < pattern.length; k++)
 				a[k] = pattern[k][j];
 			for (int i = 0; i < pattern.length; i++) {
-				double min_max[] = new double[2];
-				min_max = min_max_fun(a);
-				double minValue = min_max[0];
-				double maxValue = min_max[1];
+//				double min_max[] = new double[2];
+//				min_max = min_max_fun(a);
+				double minValue = min_max_fun(a)[0];
+				double maxValue = min_max_fun(a)[1];
+//				double minValue = min_max[0];
+//				double maxValue = min_max[1];
 				// pattern[i][j]=(pattern[i][j]-minValue)/(maxValue-minValue)是错误写法
 				pattern[i][j] = (copypattern[i][j] - minValue)
 						/ (maxValue - minValue);
