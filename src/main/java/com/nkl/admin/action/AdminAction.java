@@ -50,10 +50,10 @@ public class AdminAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 	@Resource
-	AdminManager adminManager;
+	transient AdminManager adminManager;
  
 	@Autowired
-	ProcessEngine processEngine;
+	transient ProcessEngine processEngine;
 
 	// 抓取页面参数liuhaide
 	String savePath; 
@@ -67,7 +67,7 @@ public class AdminAction extends BaseAction {
 	Score paramsScore;
 	Evaluate paramsEvaluate;
 	SScore paramsSScore;
-	Canshu paramsCanshu;
+	transient Canshu paramsCanshu;
 	String tip;
 	String piid;
 
@@ -1772,6 +1772,7 @@ public String bohui() {
 			ProcessInstance processInstance = processEngine.getExecutionService().startProcessInstanceByKey("test",
 					variables);
 			String pDId = processInstance.getProcessDefinitionId(); // pDId:----test-1
+			System.out.println("pDId:"+pDId);
 			String pIid = processInstance.getId(); // pIid:----test.60001
 			processEngine.getExecutionService().signalExecutionById(pIid, "to 张老师审批");
 			// jbpm
