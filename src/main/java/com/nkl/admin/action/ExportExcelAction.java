@@ -20,7 +20,7 @@ public class ExportExcelAction extends BaseAction{
 
 	private static final long serialVersionUID = 8143993190677252109L;
 	@Resource
-	AdminManager adminManager;
+	transient AdminManager adminManager;
 	
 	//导出参数
 	User paramsUser;

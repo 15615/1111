@@ -2,8 +2,10 @@ package com.nkl.admin.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -52,8 +54,8 @@ public class Excel2Txt {
 			
 			File file = new File(saveFile);
 			if (!file.exists()) {
-				file.createNewFile();
-			}
+				if(!file.createNewFile()) return tip = "目前后台服务器繁忙，请稍后再试吧";
+ 			}
 			OutputStreamWriter fileWriter = 	new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 			//FileWriter fileWriter =new FileWriter(file);
 			for (int i = 0; i < datas.size(); i++) {
@@ -70,11 +72,23 @@ public class Excel2Txt {
 			}
 			fileWriter.flush();
             fileWriter.close();
-		}catch (Exception e) {
+		}
+		catch (FileNotFoundException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			tip = "目前后台服务器繁忙，请稍后再试吧";
-		}finally{
+		}
+		catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			tip = "目前后台服务器繁忙，请稍后再试吧";
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			tip = "目前后台服务器繁忙，请稍后再试吧";
+		}
+		finally{
 			if (is!=null) {
 				try {
 					is.close();
