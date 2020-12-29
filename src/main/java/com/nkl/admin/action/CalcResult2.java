@@ -199,47 +199,47 @@ public class CalcResult2 {
 		return result.toString();
 	}
 
-	public static void main(String[] args) throws Exception {
-		CalcResult2 calcResult2 = new CalcResult2();
-		File file1 = new File("D:\\FCM手算\\java配置与输出\\one-data.txt");// 一行五列数据
-		calcResult2.getLineFromTxt1(file1, " ", 0);
-		File file2 = new File("D:\\FCM手算\\java配置与输出\\center1.txt");// 三行五列数据
-		calcResult2.getLineFromTxt1(file2, " ", 1);
-		File file3 = new File("D:\\FCM手算\\java配置与输出\\---data_in.txt");// 37行5列数据
-		calcResult2.getLineFromTxt1(file3, " ", 2);
-		File file4 = new File("D:\\FCM手算\\java配置与输出\\matrix1.txt");// 37行3列数据
-		// System.out.printf("3144442\n");
-		calcResult2.getLineFromTxt(file4, " ");
-		BigDecimal anss = calcResult2.solve(1);
-
-		int bb=1;
-	      
-        for(int i=2;i<calcResult2.lieee;i++)
-        {
-        	
-        	if(calcResult2.solvee(i).compareTo(anss)<0)
-              {
-                  anss=calcResult2.solvee(i);
-                       bb=i;
-              }
-        	
-        }
-        System.out.printf("最短的那行数据:%d%n",bb);
-    	Writer out = 	new OutputStreamWriter(new FileOutputStream(file3), "UTF-8");
-       // Writer out =new FileWriter(file3);
-        for(int i=1; i<calcResult2.lieee; i++)
-        {
-            for(int j=0; j<calcResult2.lie; j++)
-            {
-                out.write(calcResult2.arr3[i][j].setScale(2, RoundingMode.HALF_UP).toString()+" ");
-            }
-            out.write("\r\n");
-        }
-        for(int i=0;i<calcResult2.lie;i++)
-        {
-        	 out.write(calcResult2.arr2[i].setScale(2, RoundingMode.HALF_UP).toString()+" ");
-        }
-        out.write("\r\n");
-        out.close();
-	}
+//	public static void main(String[] args) throws Exception {
+//		CalcResult2 calcResult2 = new CalcResult2();
+//		File file1 = new File("D:\\FCM手算\\java配置与输出\\one-data.txt");// 一行五列数据
+//		calcResult2.getLineFromTxt1(file1, " ", 0);
+//		File file2 = new File("D:\\FCM手算\\java配置与输出\\center1.txt");// 三行五列数据
+//		calcResult2.getLineFromTxt1(file2, " ", 1);
+//		File file3 = new File("D:\\FCM手算\\java配置与输出\\---data_in.txt");// 37行5列数据
+//		calcResult2.getLineFromTxt1(file3, " ", 2);
+//		File file4 = new File("D:\\FCM手算\\java配置与输出\\matrix1.txt");// 37行3列数据
+//		// System.out.printf("3144442\n");
+//		calcResult2.getLineFromTxt(file4, " ");
+//		BigDecimal anss = calcResult2.solve(1);
+//
+//		int bb=1;
+//	      
+//        for(int i=2;i<calcResult2.lieee;i++)
+//        {
+//        	
+//        	if(calcResult2.solvee(i).compareTo(anss)<0)
+//              {
+//                  anss=calcResult2.solvee(i);
+//                       bb=i;
+//              }
+//        	
+//        }
+//        System.out.printf("最短的那行数据:%d%n",bb);
+//    	Writer out = 	new OutputStreamWriter(new FileOutputStream(file3), "UTF-8");
+//       // Writer out =new FileWriter(file3);
+//        for(int i=1; i<calcResult2.lieee; i++)
+//        {
+//            for(int j=0; j<calcResult2.lie; j++)
+//            {
+//                out.write(calcResult2.arr3[i][j].setScale(2, RoundingMode.HALF_UP).toString()+" ");
+//            }
+//            out.write("\r\n");
+//        }
+//        for(int i=0;i<calcResult2.lie;i++)
+//        {
+//        	 out.write(calcResult2.arr2[i].setScale(2, RoundingMode.HALF_UP).toString()+" ");
+//        }
+//        out.write("\r\n");
+//        out.close();
+//	}
 }
