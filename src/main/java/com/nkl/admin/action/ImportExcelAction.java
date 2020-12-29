@@ -23,10 +23,14 @@ import com.nkl.common.util.Param;
 import com.nkl.common.util.StringUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
-@SuppressWarnings("serial")
+//@SuppressWarnings("serial")
 @Controller
 @Scope("prototype")
-public class ImportExcelAction extends ActionSupport  {
+public class ImportExcelAction extends ActionSupport{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -774181327892328274L;
 	//封装文件标题请求参数的属性
 	private String title;
 	//封装导入文件域的属性
