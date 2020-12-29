@@ -98,8 +98,10 @@ public class CalcResult2 {
         }
         if(y==1)
         	liee=xee;
+        System.out.println("liee"+liee);
         if(y==2)
         	lieee=xee;
+        System.out.println("lieee"+lieee);
         if(br != null) br.close();
 	}
 
