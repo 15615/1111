@@ -16,7 +16,7 @@ public class LoginAction  extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 	@Resource
-	LoginManager loginManager;
+	transient LoginManager loginManager;
 	
 	User params;
 	String tip;
