@@ -781,12 +781,13 @@ public class AdminManager {
 	 * @Description: 参数导入
 	 * @param data1
 	 * @return boolean
+	 * @throws IOException 
 	 */
-	public boolean canshudaoru(Canshu canshu, String parameters) {
-		try {
+	public boolean canshudaoru(Canshu canshu, String parameters) throws IOException {
+//		try {
 			File file = new File(parameters);
 			if (!file.exists()) {
-				file.createNewFile();
+				if(!file.createNewFile()) return false; //创建失败直接返回false
 			}
 			OutputStreamWriter fileWriter=new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 		//	FileWriter fileWriter = new FileWriter(file);
@@ -803,11 +804,11 @@ public class AdminManager {
 			fileWriter.write(canshu.getParam6());
 			fileWriter.flush();
 			fileWriter.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return false;
-		}
+	//} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			return false;
+//		}
 		return true;
 	}
 
@@ -816,12 +817,16 @@ public class AdminManager {
 	 * @Description: 目标导入
 	 * @param data1
 	 * @return boolean
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
 	 */
-	public boolean mubiaodaoru(Canshu canshu, String parameters) {
-		try {
+	public boolean mubiaodaoru(Canshu canshu, String parameters) throws IOException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+//		try {
 			File file = new File(parameters);
 			if (!file.exists()) {
-				file.createNewFile();
+				if(!file.createNewFile()) return false; //创建失败直接返回false
 			}
 			OutputStreamWriter fileWriter=new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 		//	FileWriter fileWriter = new FileWriter(file);
@@ -847,11 +852,11 @@ public class AdminManager {
 			}
 			fileWriter.flush();
 			fileWriter.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return false;
-		}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			return false;
+//		}
 		return true;
 	}
 }
