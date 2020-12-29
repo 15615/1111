@@ -165,7 +165,7 @@ public class TestController {
 	 * 查询历史任务
 	 */
 	@Test
-	public void QueryHisTask() {
+	public void queryHisTask() {
 		List<HistoryTask> list = processEngine.getHistoryService().createHistoryTaskQuery().state(Task.STATE_COMPLETED)
 				.executionId("test.80001").list();
 		for (HistoryTask historyTask : list) {
