@@ -1,6 +1,7 @@
 package com.nkl.admin.action;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class ImportExcelAction extends ActionSupport  {
 	}
 	
 	@Resource
-	AdminManager adminManager;
+	transient AdminManager adminManager;
 	
 	/**
 	 * @Title: importScore
@@ -185,7 +186,18 @@ public class ImportExcelAction extends ActionSupport  {
 			
 			//导入学生入库
 			adminManager.addUserBatch(users);
+		} catch(RuntimeException e){
+			e.printStackTrace();
+			Param.setAttribute("tip", "no");
+			Param.setAttribute("tipInfo", "后台服务器繁忙！");
+			return INPUT;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Param.setAttribute("tip", "no");
+			Param.setAttribute("tipInfo", "后台服务器繁忙！");
+			return INPUT;
 		} catch (Exception e) {
+			e.printStackTrace();
 			Param.setAttribute("tip", "no");
 			Param.setAttribute("tipInfo", "后台服务器繁忙！");
 			return INPUT;
