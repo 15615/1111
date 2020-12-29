@@ -120,11 +120,18 @@ public class User extends BaseDomain {
 	}
 
 	public void setReg_date(Date reg_date){
-		this.reg_date=reg_date;
+		if(reg_date == null){
+			this.reg_date=null;
+		}else {
+			this.reg_date=(Date) reg_date.clone();
+		}
 	}
 
-	public Date getReg_date(){
-		return reg_date;
+	public Date getReg_date(){ //
+		if(reg_date == null){
+			return null;
+		}
+		return (Date) reg_date.clone();
 	}
 
 	public void setUser_type(int user_type){
