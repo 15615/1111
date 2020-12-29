@@ -122,9 +122,9 @@ public class CalcResult2 {
                 }
                 else
                 {
-                    BigDecimal ds1=(ds.multiply(new BigDecimal(0.1))).multiply(new BigDecimal(s.charAt(i)-'0'));
+                    BigDecimal ds1=(ds.multiply(new BigDecimal("0.1"))).multiply(new BigDecimal(s.charAt(i)-'0'));
                     anss=anss.add(ds1);
-                    ds=ds.multiply(new BigDecimal(0.1));
+                    ds=ds.multiply(new BigDecimal("0.1"));
                 }
             }
         }
@@ -161,7 +161,7 @@ public class CalcResult2 {
 			getLineFromTxt1(file2, " ", 1);
 			File file3 = new File(data_in);// 37行5列数据
 			if (!file3.exists()) {
-				file3.createNewFile();
+				if(!file3.createNewFile()) return "文件夹创建失败！";
 			}
 			getLineFromTxt1(file3, " ", 2);
 			File file4 = new File(matrix1);// 37行3列数据
