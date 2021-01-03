@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <process name="qingjia" xmlns="http://jbpm.org/4.4/jpdl">
-   <start name="start1" g="335,51,48,48">
-      <transition name="to 请假" to="请假" g="-63,-25"/>
+   <start g="335,51,48,48" name="start1">
+      <transition g="-63,-25" name="to 请假" to="请假"/>
    </start>
-   <task name="请假" g="311,154,92,52" assignee="#{application}">
-      <transition name="to 班主任审批" to="班主任审批" g="-63,-25"/>
+   <task assignee="#{application}" g="311,154,92,52" name="请假">
+      <transition g="-63,-25" name="to 班主任审批" to="班主任审批"/>
    </task>
-   <task name="班主任审批" g="314,252,92,52" assignee="班主任">
-      <transition name="to 学院审批" to="学院审批" g="-85,-25"/>
+   <task assignee="班主任" g="314,252,92,52" name="班主任审批">
+      <transition g="-85,-25" name="to 学院审批" to="学院审批"/>
    </task>
-   <task name="学院审批" g="312,337,92,52" assignee="学院">
-      <transition name="to end1" to="end1" g="-62,-25"/>
+   <task assignee="学院" g="312,337,92,52" name="学院审批">
    </task>
-   <end name="end1" g="335,430,48,48"/>
 </process>
