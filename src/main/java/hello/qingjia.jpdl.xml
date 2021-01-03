@@ -5,8 +5,5 @@
       <transition g="-63,-25" name="to 请假" to="请假"/>
    </start>
    <task assignee="#{application}" g="311,154,92,52" name="请假">
-      <transition g="-63,-25" name="to 班主任审批" to="班主任审批"/>
-   </task>
-   <task assignee="班主任" g="314,252,92,52" name="班主任审批">
    </task>
 </process>
