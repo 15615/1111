@@ -2,8 +2,5 @@
 
 <process name="qingjia" xmlns="http://jbpm.org/4.4/jpdl">
    <start g="335,51,48,48" name="start1">
-      <transition g="-63,-25" name="to 请假" to="请假"/>
    </start>
-   <task assignee="#{application}" g="311,154,92,52" name="请假">
-   </task>
 </process>
