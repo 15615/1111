@@ -144,7 +144,7 @@ H1 a {
 <body>
 <table width="390" border="0" cellspacing="0" cellpadding="0" height="100%">
   <tr>
-  	<td height="23" style="text-align:center; line-height:23px; color:#BEDFF1; background:url(images/left_title.gif) no-repeat left bottom;font-weight:bold">Function module management</td>
+  	<td height="23" style="text-align:center; line-height:23px; color:#BEDFF1; background:url(images/left_title.gif) no-repeat left bottom;font-weight:bold">功能模块管理</td>
   </tr>
   <tr>
     <td width="390" valign="top" style="background:#fff;">
@@ -153,7 +153,7 @@ H1 a {
 			  <tr>
 				<td width="390" valign="top">
 				<div id="container">
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Personal center   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 个人中心   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -161,12 +161,12 @@ H1 a {
 					  </tr>
 					</table>
 					<ul class="MM">
-					  <li><a href="modifyInfo.jsp" target="MainFrame">User personal information</a></li>
-					  <li><a href="modifyPwd.jsp" target="MainFrame">User changes password</a></li>
+					  <li><a href="modifyInfo.jsp" target="MainFrame">用户个人信息</a></li>
+					  <li><a href="modifyPwd.jsp" target="MainFrame">用户修改密码</a></li>
 					</ul>
 				  </div>
 				  <c:if test="${admin.user_type==3}">
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* College Class Management   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学院班级管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -178,7 +178,7 @@ H1 a {
 					  <li><a href="Admin_addClazzShow.action" target="MainFrame">学院新增班级</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* College Course Management   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学院课程管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -190,7 +190,7 @@ H1 a {
 					  <li><a href="Admin_addCourseShow.action" target="MainFrame">学院新增课程</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Teacher management   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 任课教师管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -199,10 +199,11 @@ H1 a {
 					</table>
 					<ul class="MM">
 					  <li><a href="Admin_listTeachers.action" target="MainFrame">任课教师信息查询</a></li>
+					   <li><a href="Admin_xxx.action" target="MainFrame">wuwuw</a></li>
 					  <li><a href="Admin_addTeacherShow.action" target="MainFrame">新增教师信息</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* School year teaching plan   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学年教学计划   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -214,7 +215,7 @@ H1 a {
 					  <li><a href="Admin_addPlanShow.action" target="MainFrame">新增教学计划</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Class schedule   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 班级课程安排表   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -227,7 +228,7 @@ H1 a {
 					  <li><a href="Admin_listCplansByClazzShow.action" target="MainFrame">课表一周视图</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Faculty Student Management  *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 院系学生管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -240,7 +241,7 @@ H1 a {
 					  <li><a href="importUserP.jsp" target="MainFrame">导入学生</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Process approval   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 智能模块管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -251,11 +252,12 @@ H1 a {
 					  <%--<li><a href="Admin_listEvaluates.action" target="MainFrame">智能模块1（教师发链接）</a></li>
 					  <li><a href="Admin_listEvaluatesSum.action" target="MainFrame">智能模块2（学生查链接）</a></li>
 					  --%><li><a href="Admin_listStuCourse.action" target="MainFrame">学生选课记录</a></li>
+					  <li><a href="Admin_BPMN.action" target="MainFrame">BPMN建模子系统</a></li>
 					</ul>
 				  </div>
 				  </c:if>
 				  <c:if test="${admin.user_type==2}">
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Student achievement management   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学生成绩管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -270,7 +272,7 @@ H1 a {
 					  <li><a href="importScoreP.jsp" target="MainFrame">导入成绩</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Subject Class Schedule   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学科班级课表   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -281,7 +283,7 @@ H1 a {
 					  <li><a href="Admin_listCplansByClazzShow.action" target="MainFrame">课表一周视图</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Performance review   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 智能模块管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -289,13 +291,24 @@ H1 a {
 					  </tr>
 					</table>
 					<ul class="MM">
-					  <li><a href="Admin_listSScores.action" target="MainFrame">Performance review</a></li>
+					  <li><a href="Admin_listSScores.action" target="MainFrame">成绩审核</a></li>
 					  <li><a href="znmk.jsp" target="MainFrame">智能监测</a></li>
+					</ul>
+				  </div>
+				   <h1 class="type"><a href="javascript:void(0)">--------------------* 请假模块管理   *--------------------</a></h1>
+				  <div class="content">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr>
+						<td><img src="images/menu_topline.gif" width="390" height="5" /></td>
+					  </tr>
+					</table>
+					<ul class="MM">
+					<li><a href="Admin_listSScores.action" target="MainFrame">请假</a></li>
 					</ul>
 				  </div>
 				  </c:if>
 				  <c:if test="${admin.user_type==1}">
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Student Course Management   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学生选课管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -307,7 +320,7 @@ H1 a {
 					  <li><a href="Admin_addScourceShow.action" target="MainFrame">新增选修课程</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Student results query   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学生成绩查询   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -319,7 +332,7 @@ H1 a {
 					  <li><a href="Admin_listScoresSum.action" target="MainFrame">总分成绩</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Subject Class Schedule   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学科班级课表   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -330,7 +343,7 @@ H1 a {
 					  <li><a href="Admin_listCplansByClazzShow.action" target="MainFrame">课表一周视图</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* Process approval   *--------------------</a></h1>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 智能模块管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -341,6 +354,17 @@ H1 a {
 					  <li><a href="Admin_listEvaluates.action" target="MainFrame">智能模块1（科研链接）</a></li>
 					  <li><a href="Admin_addEvaluateShow.action" target="MainFrame">智能模块2（下载链接）</a></li>
 					  --%><li><a href="Admin_listSScores.action" target="MainFrame">填评测成绩</a></li>
+					</ul>
+				  </div>
+				  <h1 class="type"><a href="javascript:void(0)">--------------------* 请假模块管理   *--------------------</a></h1>
+				  <div class="content">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr>
+						<td><img src="images/menu_topline.gif" width="390" height="5" /></td>
+					  </tr>
+					</table>
+					<ul class="MM">
+					<li><a href="Admin_listSScores.action" target="MainFrame">请假</a></li>
 					</ul>
 				  </div>
 				  </c:if>
