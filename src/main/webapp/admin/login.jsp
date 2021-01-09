@@ -25,7 +25,7 @@
 </style>
 </head>
 <BODY>
-<FORM id="info" name="info"  method="post" action="LoginInSystem.action">
+<FORM id="info" name="info"  method="post" action="LogininSystem.action">
 <DIV id=UpdatePanel1 style="margin:0px auto;width:900px">
 <DIV>
 <TABLE cellSpacing=0 cellPadding=0 width=900 align=center border=0>
