@@ -19,15 +19,7 @@ public class LoginAction  extends BaseAction {
 	transient LoginManager loginManager;
 	
 	User params;
-	String tip;
-
-	
-	
-	
-	
-	
-	
-	
+	String tip;	
 	/**
 	 * 
 	 * **
