@@ -4,16 +4,16 @@
    <start g="344,54,48,48" name="start1">
       <transition g="-90,-13" name="to 添加成绩" to="添加成绩"/>
    </start>
-   <task g="318,144,92,52" name="添加成绩" assignee="#{application}">
+   <task assignee="#{application}" g="318,144,92,52" name="添加成绩">
       <transition g="-100,-18" name="to 张老师审批" to="张老师审批"/>
    </task>
-   <task g="320,235,92,52" name="张老师审批" assignee="张老师">
+   <task assignee="张老师" g="320,235,92,52" name="张老师审批">
       <transition g="-107,-19" name="to 李老师审批" to="李老师审批"/>
    </task>
-   <task g="329,333,92,52" name="李老师审批" assignee="李老师">
+   <task assignee="李老师" g="318,340,92,52" name="李老师审批">
       <transition g="-104,-15" name="to 王老师审批" to="王老师审批"/>
    </task>
-   <task g="327,412,92,52" name="王老师审批" assignee="王老师">
+   <task assignee="王老师" g="327,412,92,52" name="王老师审批">
       <transition g="-66,-4" name="to end1" to="end1"/>
    </task>
    <end g="345,497,48,48" name="end1"/>
