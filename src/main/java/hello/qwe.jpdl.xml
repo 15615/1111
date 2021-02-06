@@ -3,5 +3,4 @@
 <process name="qwe" xmlns="http://jbpm.org/4.4/jpdl">
    <start g="314,67,48,48" name="start1"/>
    <state name="state1" g="325,227,92,52"/>
-   <task name="task1" g="215,417,92,52"/>
 </process>
