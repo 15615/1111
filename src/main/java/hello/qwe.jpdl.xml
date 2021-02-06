@@ -4,4 +4,5 @@
    <start g="314,67,48,48" name="start1"/>
    <jms g="343,283,92,52" name="jms1"/>
    <state name="state1" g="325,227,92,52"/>
+   <task name="task1" g="215,417,92,52"/>
 </process>
