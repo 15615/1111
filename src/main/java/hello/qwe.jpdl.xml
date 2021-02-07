@@ -2,6 +2,5 @@
 
 <process name="qwe" xmlns="http://jbpm.org/4.4/jpdl">
    <start g="314,67,48,48" name="start1"/>
-   <java name="java1" g="387,220,7,7"/>
-   <sql name="sql1" g="423,286,92,52"/>
+   <java g="387,220,7,7" name="java1"/>
 </process>
