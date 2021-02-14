@@ -4,4 +4,5 @@
    <start g="314,67,48,48" name="start1"/>
    <java g="387,220,7,7" name="java1"/>
    <state g="220,223,92,52" name="state1"/>
+   <jms name="jms1" g="215,322,92,52"/>
 </process>
