@@ -256,8 +256,7 @@ public class ScourceDao extends BaseDao {
 		sum = (int) count;
 		return sum;long count = (Long) super.executeQueryCountHql(sBuilder.toString(), params);
 		s
- * return sum;
- * return sum;
+
  * 
  * 
  */
