@@ -248,3 +248,16 @@ public class ScourceDao extends BaseDao {
 	}
 
 }
+
+/**
+ * 
+ * 
+ * long count = (Long) super.executeQueryCountHql(sBuilder.toString(), params);
+		sum = (int) count;
+		return sum;long count = (Long) super.executeQueryCountHql(sBuilder.toString(), params);
+		s
+ * return sum;
+ * return sum;
+ * 
+ * 
+ */
