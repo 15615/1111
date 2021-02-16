@@ -2065,6 +2065,8 @@ public String bohui() {
 				return returnPage;
 			}
 			// 保存编辑成绩
+			
+			
 			adminManager.updateScore(paramsScore);
 
 			setSuccessTip("编辑成功", "Admin_listScores.action");
