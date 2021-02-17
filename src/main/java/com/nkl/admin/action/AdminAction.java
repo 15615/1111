@@ -2152,6 +2152,12 @@ public String bohui() {
 				paramsEvaluate = new Evaluate();
 			}
 			// 设置分页信息
+			// 设置分页信息
+			// 设置分页信息
+			// 设置分页信息
+			// 设置分页信息
+			// 设置分页信息
+			
 			setPagination(paramsEvaluate);
 			// 总的条数
 			int[] sum = { 0 };
