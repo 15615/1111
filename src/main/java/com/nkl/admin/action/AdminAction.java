@@ -2100,10 +2100,10 @@ public String bohui() {
 	 * @Title: delScores
 	 * @Description: 删除成绩
 	 * 
+	 *  @Description: 删除成绩
+	 *  @Description: 删除成绩
 	 * 
-	 * 
-	 * 
-	 * 
+	 *  @Description: 删除成绩
 	 * 
 	 * @return String
 	 */
