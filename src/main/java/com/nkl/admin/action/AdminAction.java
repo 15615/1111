@@ -2066,6 +2066,11 @@ public String bohui() {
 			}
 			// 保存编辑成绩
 			
+			//adminManager.updateScore(paramsScore);
+			//adminManager.updateScore(paramsScore);
+			//adminManager.updateScore(paramsScore);
+			//adminManager.updateScore(paramsScore);
+			//adminManager.updateScore(paramsScore);
 			
 			adminManager.updateScore(paramsScore);
 
