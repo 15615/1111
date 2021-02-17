@@ -2099,6 +2099,12 @@ public String bohui() {
 	/**
 	 * @Title: delScores
 	 * @Description: 删除成绩
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
 	 * @return String
 	 */
 	public String delScores() {
