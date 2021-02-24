@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="请假" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="290,61,48,48">
+      <transition name="to 提交请假申请" to="提交请假申请" g="-115,-25"/>
+   </start>
+   <task name="提交请假申请" g="258,151,123,52">
+      <transition name="to 导师审批" to="导师审批" g="-100,-25"/>
+   </task>
+   <task name="导师审批" g="261,240,101,52">
+      <transition name="to exclusive1" to="exclusive1" g="-110,-15"/>
+   </task>
+   <task name="学院审批" g="271,385,92,52">
+      <transition name="to exclusive2" to="exclusive2" g="-100,-25"/> 
+   </task>
+   <decision name="exclusive1" g="292,315,48,48">
+      <transition name="to 学院审批" to="学院审批" g="-85,-25"/>
+      <transition name="to 领通行证" to="领通行证" g="514,350;519,556:-85,-25"/>
+   </decision>
+   <decision name="exclusive2" g="298,454,48,48">
+      <transition name="to 领通行证" to="领通行证" g="-85,-25"/>
+      <transition name="to 研究生处备案" to="研究生处备案" g="122,475:-115,-25"/>
+   </decision>
+   <task name="研究生处备案" g="39,526,141,52">
+      <transition name="to 领通行证" to="领通行证" g="-42,-26"/>
+   </task>
+   <task name="领通行证" g="276,528,92,52">
+      <transition name="to end1" to="end1" g="-62,-25"/>
+   </task>
+   <end name="end1" g="295,620,48,48"/>
+</process>
