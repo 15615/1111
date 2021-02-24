@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="提交请假申请一" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="445,66,48,48" name="start1">
+      <transition g="-115,-25" name="to 提交请假申请" to="提交请假申请"/>
+   </start>
+   <task assignee="#{student}" g="416,178,116,62" name="提交请假申请">
+      <transition g="-100,-25" name="to 班主任审批" to="班主任审批"/>
+   </task> 
+   <task g="419,296,114,58" name="班主任审批"> 
+      <transition g="-100,-25" name="to exclusive1" to="exclusive1"/>
+   </task>
+   <decision g="453,416,48,48" name="exclusive1">
+      <transition g="-85,-25" name="to 学院审批" to="学院审批">
+       <condition expr="#{result=='yes'}"/>
+      </transition>
+      <transition g="239,436;239,201:-115,-25" name="to 提交请假申请" to="提交请假申请">
+      <condition expr="#{result=='no'}"/>
+      </transition>
+   </decision>
+   <task g="420,522,120,63" name="学院审批">
+      <transition g="-62,-25" name="to end1" to="end1"/>
+   </task>
+   <end g="462,638,48,48" name="end1"/>
+</process>
