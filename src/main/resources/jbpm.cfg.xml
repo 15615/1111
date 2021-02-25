@@ -8,5 +8,5 @@
   <import resource="jbpm.jpdl.cfg.xml" />
   <import resource="jbpm.bpmn.cfg.xml" />
   <import resource="jbpm.identity.cfg.xml" />
-
+ 
 </jbpm-configuration>
