@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.nkl.common.dao.BaseDao;
 import com.nkl.common.util.StringUtil;
 import com.nkl.admin.domain.Clazz;
+import com.nkl.admin.domain.Leave;
 
 @Repository
 public class ClazzDao extends BaseDao {
