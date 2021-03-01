@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
+import org.jbpm.api.Configuration;
 import org.jbpm.api.ExecutionService;
 import org.jbpm.api.ProcessDefinition;
 import org.jbpm.api.ProcessEngine;
@@ -29,12 +30,15 @@ import org.jbpm.api.model.ActivityCoordinates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nkl.admin.domain.Canshu;
 import com.nkl.admin.domain.Clazz;
 import com.nkl.admin.domain.Course;
 import com.nkl.admin.domain.Cplan;
 import com.nkl.admin.domain.Evaluate;
+import com.nkl.admin.domain.Leave;
 import com.nkl.admin.domain.Plan;
 import com.nkl.admin.domain.SScore;
 import com.nkl.admin.domain.Score;
@@ -44,7 +48,10 @@ import com.nkl.admin.manager.AdminManager;
 import com.nkl.common.action.BaseAction;
 import com.nkl.common.util.DateUtil;
 import com.nkl.common.util.FindProjectPath;
+import com.nkl.common.util.JbpmUtils;
 import com.nkl.common.util.Param;
+import com.nkl.common.util.XmlUtil;
+import com.nkl.common.util.jpdl.util.CreateJbpmZip;
 
 @Controller(value = "adminAction")
 @Scope("prototype")
@@ -54,15 +61,22 @@ public class AdminAction extends BaseAction {
 	@Resource
 	transient AdminManager adminManager;
  
-	@Autowired
-	transient ProcessEngine processEngine;
+	/*
+	 * @Autowired ProcessEngine processEngine;
+	 */
+	private ProcessEngine processEngine = new Configuration().setResource("jbpm.cfg.xml").buildProcessEngine();
+
+	
+	/*
+	 * @Resource private JbpmUtils jbpmUtils;
+	 */
 
 	// 抓取页面参数liuhaide
 	String savePath; 
-	
 	User paramsUser;
 	Clazz paramsClazz;
 	Course paramsCourse;
+	Leave paramsLeave;
 	Plan paramsPlan;
 	Cplan paramsCplan;
 	Scource paramsScource;
@@ -72,14 +86,45 @@ public class AdminAction extends BaseAction {
 	transient Canshu paramsCanshu;
 	String tip;
 	String piid;
-
+	String json;
+	String btime;
+	String etime;
+	
+	
+	public String generateZip(){
+		String saveDir;
+		try {
+			System.out.println(json);
+			//打包zip
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+			String time = sdf.format(new Date());
+			saveDir = "D:\\temp\\loginName\\"+time;
+			//先将json格式转换成xml并写入一个xml文件，再读取这个xml进行解析生成png图片，最后打包zip
+			//创建xml文件
+			String xmlSavePath = XmlUtil.jsonChange2Jpdl(json, saveDir, time+".xml");
+			String zipPath[] = CreateJbpmZip.getJbpmZipByXmlResource(xmlSavePath, saveDir, "test");
+			for(String ss :zipPath){
+				System.out.println(ss);
+			}
+			setResult("saveDir", saveDir);
+			return "success"; 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * @Title: daoruchengji
 	 * @Description: 导入成绩
 	 * @return String
-	 * 
-	 * 
-	 * 
 	 */
 	public String daoruchengji() {
 		try {
@@ -628,6 +673,9 @@ public String bohui() {
 		return "success";
 	}
 
+	
+	
+	
 	/**
 	 * @Title: queryStudent
 	 * @Description: 查询学生
@@ -1777,7 +1825,6 @@ public String bohui() {
 			ProcessInstance processInstance = processEngine.getExecutionService().startProcessInstanceByKey("test",
 					variables);
 			String pDId = processInstance.getProcessDefinitionId(); // pDId:----test-1
-			System.out.println("pDId:"+pDId);
 			String pIid = processInstance.getId(); // pIid:----test.60001
 			processEngine.getExecutionService().signalExecutionById(pIid, "to 张老师审批");
 			// jbpm
@@ -2067,13 +2114,6 @@ public String bohui() {
 				return returnPage;
 			}
 			// 保存编辑成绩
-			
-			//adminManager.updateScore(paramsScore);
-			//adminManager.updateScore(paramsScore);
-			//adminManager.updateScore(paramsScore);
-			//adminManager.updateScore(paramsScore);
-			//adminManager.updateScore(paramsScore);
-			
 			adminManager.updateScore(paramsScore);
 
 			setSuccessTip("编辑成功", "Admin_listScores.action");
@@ -2101,12 +2141,6 @@ public String bohui() {
 	/**
 	 * @Title: delScores
 	 * @Description: 删除成绩
-	 * 
-	 *  @Description: 删除成绩
-	 *  @Description: 删除成绩
-	 * 
-	 *  @Description: 删除成绩
-	 * 
 	 * @return String
 	 */
 	public String delScores() {
@@ -2165,12 +2199,6 @@ public String bohui() {
 				paramsEvaluate = new Evaluate();
 			}
 			// 设置分页信息
-			// 设置分页信息
-			// 设置分页信息
-			// 设置分页信息
-			// 设置分页信息
-			// 设置分页信息
-			
 			setPagination(paramsEvaluate);
 			// 总的条数
 			int[] sum = { 0 };
@@ -2443,6 +2471,11 @@ public String bohui() {
 		this.piid = piid;
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * 小锋 获取图片流程
 	 * 
@@ -2504,6 +2537,16 @@ public String bohui() {
 		return null;
 	}
 
+	public String getJson() {
+		return json;
+	}
+
+	public void setJson(String json) {
+		this.json = json;
+	}
+	
+	
+	
 //	/**
 //	 * @Title: saveSScore
 //	 * @Description: 更改flag -xf
@@ -2549,5 +2592,353 @@ public String bohui() {
 //	
 //		return "sscoreShow";
 //	}
+	
+	public Leave getParamsLeave() {
+		return paramsLeave;
+	}
 
+	public String getBtime() {
+		return btime;
+	}
+
+	public void setBtime(String btime) {
+		this.btime = btime;
+	}
+
+	public String getEtime() {
+		return etime;
+	}
+
+	public void setEtime(String etime) {
+		this.etime = etime;
+	}
+
+	public void setParamsLeave(Leave paramsLeave) {
+		this.paramsLeave = paramsLeave;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/* --------------请假模块开始 ------------------ */
+	public void deployProcessDefinition1() {
+		processEngine.getRepositoryService()//
+				.createDeployment()//
+				.addResourceFromClasspath("hello/leave1.jpdl.xml")//
+				.addResourceFromClasspath("hello/leave1.png")//
+				.deploy();
+	}
+	public void deployProcessDefinition2() {
+		processEngine.getRepositoryService()//
+				.createDeployment()//
+				.addResourceFromClasspath("hello/leave2.jpdl.xml")//
+				.addResourceFromClasspath("hello/leave2.png")//
+				.deploy();
+	}
+	
+	/**
+	 * @Title: listLeave
+	 * @Description: 查询请假
+	 * @return String
+	 */
+	public String listLeave() {
+		try {
+			if (paramsLeave == null) {
+				paramsLeave = new Leave();
+			}
+			User admin = (User) Param.getSession("admin");
+			//学生查询的时候要带自己的名字
+			if (admin.getUser_type()==1) {
+				paramsLeave.setStuname(admin.getReal_name());
+			//张老师tea1负责班 主任审批和导师审批
+			}else if (admin.getUser_name().equals("tea1")) {  
+				paramsLeave.setState(1);
+			//李老师tea2负责学院审批
+			}else if (admin.getUser_name().equals("tea2")) {
+				paramsLeave.setState(2);
+			//王老师tea3负责3研究生处备案
+			}else if (admin.getUser_name().equals("tea3")) {
+				paramsLeave.setState(3);
+			}else {
+				setErrorTip("您没有权限浏览此模块", "main.jsp");
+				return "infoTip";
+			}
+			
+			// 设置分页信息
+			setPagination(paramsLeave);
+			// 总的条数
+			int[] sum = { 0 };
+			// 查询请假列表
+			List<Leave> leaves = adminManager.listLeaves(paramsLeave, sum);
+
+			Param.setAttribute("leaves", leaves);
+			setTotalCount(sum[0]);
+
+		} catch (Exception e) {
+			setErrorTip("查询请假异常", "main.jsp");
+			return "infoTip";
+		}
+
+		return "leaveShow";
+	}
+	
+	/**
+	 * 提交请假 addLeaveShow
+	 * @return
+	 * @throws Exception
+	 */
+	public String addLeave() {
+		try {
+			if (paramsLeave==null) {
+				setErrorTip("请假不能为空", "Admin_listLeave.action");
+				return "infoTip";
+			}
+			if (paramsLeave.getReason()==null) {
+				setErrorTip("请假原因不能为空", "Admin_listLeave.action");
+				return "infoTip";
+			}
+			  String bTimeString = btime.replaceAll("T", " ")+":00";
+			  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			  Date bTime = simpleDateFormat.parse(bTimeString);
+			  paramsLeave.setStarttime(bTime);
+			  String eTimeString = etime.replaceAll("T", " ")+":00";
+			  Date eTime = simpleDateFormat.parse(eTimeString);
+			  paramsLeave.setEndtime(eTime);
+			
+			Map<String, String> variables = new HashMap<String, String>();
+			variables.put("student", paramsLeave.getStuname());
+			ProcessInstance processInstance;
+			String pIid ="";
+			if (paramsLeave.getFlag()==1) {
+				 processInstance = processEngine.getExecutionService().startProcessInstanceByKey("提交请假申请一",
+						variables);
+				  pIid = processInstance.getId(); // pIid:----test.60001
+					System.out.println("pIid:----" + pIid);
+					processEngine.getExecutionService().signalExecutionById(pIid, "to 班主任审批"); // jbpm
+			}else {
+				 processInstance = processEngine.getExecutionService().startProcessInstanceByKey("提交请假申请二",
+						variables);
+				  pIid = processInstance.getId(); // pIid:----test.60001
+					System.out.println("pIid:----" + pIid);
+					processEngine.getExecutionService().signalExecutionById(pIid, "to 导师审批"); // jbpm
+			}
+			
+			// end
+			paramsLeave.setPiid(pIid);
+			paramsLeave.setState(1);
+		// 添加班级
+		adminManager.addLeave(paramsLeave);
+		setSuccessTip("添加成功", "Admin_listLeave.action");
+	} 
+		catch (Exception e) {
+		setErrorTip("添加班级异常", "Admin_listLeave.action");
+	}
+
+	return "infoTip";
+	}
+	
+	/**
+	 * @Title: addClazzShow addLeaveShow
+	 * @Description: 显示添加请假页面
+	 * @return String
+	 */
+	public String addLeaveShow() {
+		return "leaveEdit";
+	}
+	
+	/**
+	 * @Title: editClazz
+	 * @Description: 编辑请假
+	 * @return String
+	 */
+	public String editLeave() {
+		try {
+			// 得到请假
+			Leave leave = adminManager.queryLeave(paramsLeave);
+			Param.setAttribute("leave", leave);
+		} catch (Exception e) {
+			setErrorTip("查询请假异常", "Admin_listLeave.action");
+			return "infoTip";
+		}
+
+		return "leaveEdit";
+	}
+
+	/**
+	 * @Title: saveClazz
+	 * @Description: 保存编辑请假
+	 * @return String
+	 */
+	public String saveLeave() {
+		try {
+			paramsLeave.setState(1);
+			// 保存编辑请假
+			adminManager.updateLeave(paramsLeave);
+
+			setSuccessTip("编辑成功", "Admin_listLeave.action");
+		} catch (Exception e) {
+			tip = "编辑失败";
+			Param.setAttribute("clazz", paramsClazz);
+			return "clazzEdit";
+		}
+
+		return "infoTip";
+	}
+	
+	/**
+	 * @Title: passLeave
+	 * @Description: 请假流程
+	 * @return String
+	 */
+	public String passLeave() {
+		try {
+			String decode = URLDecoder.decode(new String(paramsLeave.getPiid().getBytes("ISO8859-1"),"UTF-8"),"UTF-8");
+			paramsLeave.setPiid(decode);
+			HashMap<String, Object> variables = new HashMap<String, Object>();
+			//请假一
+			if (paramsLeave.getFlag()==1) {
+				if (paramsLeave.getState()==0) {  //班主任拒绝请假
+					variables.put("result", "no");
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to exclusive1" ,variables);
+				}else if (paramsLeave.getState()==1) {  
+					
+				}else if (paramsLeave.getState()==2) {  //班主任同意请假 流程到学院审批
+					variables.put("result", "yes");
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to exclusive1" ,variables);
+				}else if (paramsLeave.getState()==3) {	//学院审批同意请假 流程结束
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to end1" ,variables);
+				}
+			}else {//请假二
+				Leave leave = adminManager.getLeaveById(paramsLeave);
+				//时间差 单位:秒
+				int m = this.calLastedTime(leave.getStarttime(), leave.getEndtime());
+				
+				if (paramsLeave.getState() == 0) {  //导师不同意
+				
+				}else if (paramsLeave.getState() == 1) {
+					
+					
+				}else if (paramsLeave.getState() == 2) { //导师同意
+					if (m <= 21600) { //6小时以内包含6小时
+						variables.put("hour", "不超过6小时");
+						paramsLeave.setState(4); //跳转到领取通行证
+					}else { //6小时以上
+						variables.put("hour", "超过6小时");
+					}
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to exclusive1" ,variables);
+				}else if (paramsLeave.getState()==3) { // 学院审批
+					if (m <= 43200) { //12小时以内 包含12小时
+						variables.put("hour", "未超过12小时");
+						paramsLeave.setState(4); //跳转到领取通行证
+					}else {
+						variables.put("hour","超过12小时");
+					}
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to exclusive2" ,variables);
+				}else if (paramsLeave.getState()==4) { //研究生备案
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to 领通行证" ,variables);
+					
+				}else if (paramsLeave.getState()==5){  //领通行证
+					processEngine.getExecutionService().signalExecutionById(paramsLeave.getPiid(),"to end1" ,variables);
+					
+				}
+			}
+			
+			
+			
+			
+			// 保存编辑请假
+			adminManager.updateLeave(paramsLeave);
+
+			setSuccessTip("执行成功", "Admin_listLeave.action");
+		} catch (Exception e) {
+			setErrorTip("执行异常", "main.jsp");
+		}
+
+		return "infoTip";
+	}
+
+	/**
+	 * @Title: delClazzs
+	 * @Description: 删除请假
+	 * @return String
+	 */
+	public String delLeave() {
+		try {
+			// 删除班级
+			adminManager.delLeaves(paramsLeave);
+
+			setSuccessTip("删除请假成功", "Admin_listLeave.action");
+		} catch (Exception e) {
+			setErrorTip("删除请假异常", "Admin_listLeave.action");
+		}
+
+		return "infoTip";
+	}
+	
+	
+	
+	public String getPic() throws Exception {
+		RepositoryService repositoryService = processEngine.getRepositoryService();
+
+		ExecutionService executionService = processEngine.getExecutionService();
+		 
+		String decode = URLDecoder.decode(new String(paramsLeave.getPiid().getBytes("ISO8859-1"),"UTF-8"),"UTF-8");
+		ProcessInstance processInstance = executionService.findProcessInstanceById(decode); // 根据ID获取流程实例
+		Set<String> activityNames = processInstance.findActiveActivityNames(); // 获取实例执行到的当前节点的名称
+
+		String processDefinitionId = processInstance.getProcessDefinitionId();
+
+		System.out.println("processDefinitionId" + processDefinitionId); // test-5
+		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
+				.processDefinitionId(processDefinitionId).uniqueResult();
+		InputStream in;
+		if (processDefinitionId.contains("提交请假申请一")) {
+			in = repositoryService.getResourceAsStream(processDefinition.getDeploymentId(), "hello/leave1.png");
+		}else {
+			in = repositoryService.getResourceAsStream(processDefinition.getDeploymentId(), "hello/leave2.png");
+		}
+		 
+ 
+		/*
+		 * ActivityCoordinates ac = repositoryService.getActivityCoordinates(
+		 * processInstance.getProcessDefinitionId(), activityNames .iterator().next());
+		 */
+
+		Image i = ImageIO.read(in);
+		BufferedImage img = new BufferedImage(i.getWidth(null), i.getHeight(null), BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = img.createGraphics();
+		g.drawImage(i, null, null);
+		g.setColor(Color.RED);
+
+		Iterator<String> iter = activityNames.iterator();
+		while (iter.hasNext()) {
+			String name = iter.next();
+			ActivityCoordinates ac = repositoryService.getActivityCoordinates(processDefinitionId, name);
+			if (ac != null) {
+				g.drawRect(ac.getX(), ac.getY(), ac.getWidth(), ac.getHeight());
+			}
+		}
+		HttpServletResponse response =ServletActionContext.getResponse();
+		// 禁止图像缓存。
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+		response.setContentType("image/png");
+		ImageIO.write(img, "png", response.getOutputStream()); 
+
+		return null; 
+	}
+	
+	public int calLastedTime(Date startDate,Date endDate) {
+		  long end = endDate.getTime();
+		  long start = startDate.getTime();
+		  int m = (int)((end - start) / 1000);
+		  return m;
+		 }
+	
+	
 }
