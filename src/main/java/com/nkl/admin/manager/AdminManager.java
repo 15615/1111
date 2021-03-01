@@ -20,6 +20,7 @@ import com.nkl.admin.dao.ClazzDao;
 import com.nkl.admin.dao.CourseDao;
 import com.nkl.admin.dao.CplanDao;
 import com.nkl.admin.dao.EvaluateDao;
+import com.nkl.admin.dao.LeaveDao;
 import com.nkl.admin.dao.PlanDao;
 import com.nkl.admin.dao.SScoreDao;
 import com.nkl.admin.dao.ScoreDao;
@@ -30,6 +31,7 @@ import com.nkl.admin.domain.Clazz;
 import com.nkl.admin.domain.Course;
 import com.nkl.admin.domain.Cplan;
 import com.nkl.admin.domain.Evaluate;
+import com.nkl.admin.domain.Leave;
 import com.nkl.admin.domain.Plan;
 import com.nkl.admin.domain.SScore;
 import com.nkl.admin.domain.Score;
@@ -60,12 +62,10 @@ public class AdminManager {
 	UserDao userDao;
 	@Resource
 	SScoreDao sscoreDao;
-
-	/**
-	 * @Title: listUsers
-	 * @Description: 用户查询
-	 * @param user
-	 * @return List<User>
+	@Resource
+	LeaveDao leaveDao;
+	/** * @Title: listUsers
+	 * @Description: 用户查询 * @param user * @return List<User>
 	 */
 	public List<User> listUsers(User user, int[] sum) {
 
@@ -776,11 +776,8 @@ public class AdminManager {
 		return true;
 	}
 
-	/**
-	 * @Title:
-	 * @Description: 参数导入
-	 * @param data1
-	 * @return boolean
+	/*** @Title:* @Description: 参数导入
+	 * * @param data1 * @return boolean
 	 * @throws IOException 
 	 */
 	public boolean canshudaoru(Canshu canshu, String parameters) throws IOException {
@@ -811,7 +808,6 @@ public class AdminManager {
 //		}
 		return true;
 	}
-
 	/**
 	 * @Title:
 	 * @Description: 目标导入
@@ -859,4 +855,40 @@ public class AdminManager {
 //		}
 		return true;
 	}
+	public List<Leave> listLeaves(Leave paramsLeave, int[] sum) {
+
+		if (sum != null) {
+			sum[0] = leaveDao.listLeavesCount(paramsLeave);
+		} 
+		List<Leave> leaves = leaveDao.listLeaves(paramsLeave);
+
+		return leaves;
+	}
+
+	public void addLeave(Leave paramsLeave) {
+		// TODO Auto-generated method stub
+		leaveDao.addLeave(paramsLeave);
+	}
+
+	public Leave queryLeave(Leave paramsLeave) {
+		// TODO Auto-generated method stub
+		Leave leave = leaveDao.getLeave(paramsLeave);
+		return leave;
+	}
+
+	public void updateLeave(Leave paramsLeave) {
+		// TODO Auto-generated method stub
+		leaveDao.updateLeave(paramsLeave);
+	}
+
+	public void delLeaves(Leave paramsLeave) {
+		// TODO Auto-generated method stub
+		leaveDao.delLeaves(paramsLeave);
+	}
+
+	public Leave getLeaveById(Leave paramsLeave) {
+		// TODO Auto-generated method stub
+		return leaveDao.getLeaveById(paramsLeave);
+	}
+	
 }
