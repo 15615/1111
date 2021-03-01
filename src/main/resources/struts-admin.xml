@@ -28,6 +28,21 @@
 			</result>
 	  	</action>
 	  	
+	  	<action name="generateZip" class="adminAction" method="generateZip">
+	  		<result name="success" type="json">
+	  			<param name="ignoreHierarchy">false</param>
+            	<param name="includeProperties">
+					success,data.*
+				</param>
+            </result>
+            <result name="error" type="json">
+            	<param name="ignoreHierarchy">false</param>
+			    <param name="includeProperties">
+					success,err.*
+				</param>
+			</result>
+	  	</action>
+	  	
 	  	<action name="queryStudent" class="adminAction" method="queryStudent">
 	  		<result name="success" type="json">
 	  			<param name="ignoreHierarchy">false</param>
@@ -70,6 +85,8 @@
 	  		<result name="resetPass">resetPass.jsp</result>
 	  		<result name="clazzShow">clazzShow.jsp</result>
 	  		<result name="clazzEdit">clazzEdit.jsp</result>
+	  		<result name="leaveShow">leaveShow.jsp</result>
+	  		<result name="leaveEdit">leaveEdit.jsp</result>
 	  		<result name="courseShow">courseShow.jsp</result>
 	  		<result name="courseEdit">courseEdit.jsp</result>
 	  		<result name="teacherShow">teacherShow.jsp</result>
