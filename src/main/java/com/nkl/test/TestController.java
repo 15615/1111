@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.jbpm.api.Configuration;
 import org.jbpm.api.Deployment;
 import org.jbpm.api.ProcessDefinition;
@@ -12,11 +14,16 @@ import org.jbpm.api.ProcessInstance;
 import org.jbpm.api.history.HistoryTask;
 import org.jbpm.api.task.Task;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestController {
 
 	private ProcessEngine processEngine = new Configuration().setResource("jbpm.cfg.xml").buildProcessEngine();
 
+	/*
+	 * @Resource private ProcessEngine processEngine;
+	 */
 	@Test
 	public void createSchema() {
 		new org.hibernate.cfg.Configuration().configure("jdpm/hibernate.cfg.xml").buildSessionFactory();
@@ -120,9 +127,6 @@ public class TestController {
 		processEngine.getTaskService().completeTask(taskId);
 	}
 	
-	
-	//ss
-	
 
 	// 和办理任务类似
 	@Test
@@ -167,10 +171,6 @@ public class TestController {
 
 	/**
 	 * 查询历史任务
-	 * 
-	 * 112
-	 * 
-	 * 
 	 */
 	@Test
 	public void queryHisTask() {
