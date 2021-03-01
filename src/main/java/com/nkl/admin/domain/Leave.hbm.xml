@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.nkl.admin.domain.Leave" table="leaves">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native" /> 
+		</id>
+		<property name="reason" type="java.lang.String">
+			<column name="reason"  length="100" />
+		</property>
+		<property name="flag" type="java.lang.Integer">
+			<column name="flag"  />
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column name="state"  />
+		</property>
+		<property name="starttime" >
+			<column name="starttime"  /> 
+		</property>
+		<property name="endtime" >
+			<column name="endtime"  />
+		</property>
+		
+		<property name="piid" type="java.lang.String">
+			<column name="piid"  />
+		</property>
+		
+		<property name="stuname" type="java.lang.String">
+			<column name="stuname"  length="300" />
+		</property>
+	</class>
+</hibernate-mapping>
