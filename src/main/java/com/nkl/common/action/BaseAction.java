@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
-
 import com.nkl.common.domain.BaseDomain;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -120,11 +119,9 @@ public class BaseAction extends ActionSupport {
 		}
 		return stringBuffer.toString();
 	}
-
 	public boolean isSuccess() {
 		return success;
 	}
-
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
