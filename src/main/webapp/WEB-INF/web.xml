@@ -38,10 +38,7 @@ version="2.5" >
   </filter-mapping>
   
 
- <!--    --> 
- 
- 
-   <filter>
+ <!--     <filter>
 <filter-name>monitoring</filter-name>
 <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
 </filter>
@@ -51,7 +48,10 @@ version="2.5" >
 </filter-mapping>
 <listener>
 <listener-class>net.bull.javamelody.SessionListener</listener-class>
-</listener>
+</listener>  --> 
+ 
+ 
+
 
 
 </web-app>
