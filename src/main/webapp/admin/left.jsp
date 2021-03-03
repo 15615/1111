@@ -303,7 +303,7 @@ H1 a {
 					  </tr>
 					</table>
 					<ul class="MM">
-					<li><a href="Admin_listSScores.action" target="MainFrame">请假</a></li>
+					<li><a href="Admin_listLeave.action" target="MainFrame">请假审批</a></li>
 					</ul>
 				  </div>
 				  </c:if>
@@ -318,6 +318,18 @@ H1 a {
 					<ul class="MM">
 					  <li><a href="Admin_listScources.action" target="MainFrame">已选课程查询</a></li>
 					  <li><a href="Admin_addScourceShow.action" target="MainFrame">新增选修课程</a></li>
+					</ul>
+				  </div>
+				 <h1 class="type"><a href="javascript:void(0)">--------------------* 学生请假管理   *--------------------</a></h1>
+				  <div class="content">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr>
+						<td><img src="images/menu_topline.gif" width="390" height="5" /></td>
+					  </tr>
+					</table>
+					<ul class="MM">
+					  <li><a href="Admin_listLeave.action?paramsLeave.stuname=${admin.real_name}" target="MainFrame">请假查询</a></li>
+					  <li><a href="Admin_addLeaveShow.action" target="MainFrame">新增请假</a></li>
 					</ul>
 				  </div>
 				  <h1 class="type"><a href="javascript:void(0)">--------------------* 学生成绩查询   *--------------------</a></h1>
@@ -356,7 +368,7 @@ H1 a {
 					  --%><li><a href="Admin_listSScores.action" target="MainFrame">填评测成绩</a></li>
 					</ul>
 				  </div>
-				  <h1 class="type"><a href="javascript:void(0)">--------------------* 请假模块管理   *--------------------</a></h1>
+			<!-- 	  <h1 class="type"><a href="javascript:void(0)">--------------------* 请假模块管理   *--------------------</a></h1>
 				  <div class="content">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
@@ -366,7 +378,7 @@ H1 a {
 					<ul class="MM">
 					<li><a href="Admin_listSScores.action" target="MainFrame">请假</a></li>
 					</ul>
-				  </div>
+				  </div>-->
 				  </c:if>
 				   
 					<script type="text/javascript">
